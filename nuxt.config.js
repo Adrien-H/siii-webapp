@@ -34,6 +34,20 @@ module.exports = {
         })
       }
     }
+  },
+
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/auth'
+  ],
+
+  auth: {
+    redirect: {
+      // login: '/login',
+      // logout: '/',
+      // callback: '/login',
+      // home: '/'
+    }
   }
 }
 
