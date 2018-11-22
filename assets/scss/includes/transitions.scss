@@ -1,0 +1,6 @@
+.page-load-enter, .page-load-leave {
+  opacity: 0;
+}
+.page-load-enter-active, .page-load-leave-active {
+  transition: all 0.2s ease-out;
+}
