@@ -1,6 +1,9 @@
 # software
 /.idea/
 
+# pwa
+sw.*
+
 # dependencies
 node_modules
 
