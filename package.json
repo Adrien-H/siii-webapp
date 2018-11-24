@@ -18,6 +18,7 @@
     "@nuxtjs/pwa": "^2.6.0",
     "@nuxtjs/toast": "^3.0.1",
     "nuxt": "^2.0.0",
+    "nuxt-i18n": "^5.4.4",
     "paradoxe": "git+https://github.com/Adrien-H/paradoxe.git#v0.2.0"
   },
   "devDependencies": {

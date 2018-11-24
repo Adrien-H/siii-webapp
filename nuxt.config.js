@@ -1,3 +1,5 @@
+const baseURL = 'http://localhost:8000'
+
 module.exports = {
   /*
   ** Headers of the page
@@ -45,7 +47,8 @@ module.exports = {
     '@nuxtjs/axios',
     '@nuxtjs/auth',
     ['@nuxtjs/pwa', { icon: false }],
-    '@nuxtjs/toast'
+    '@nuxtjs/toast',
+    // 'nuxt-i18n'
   ],
 
   auth: {
@@ -69,12 +72,32 @@ module.exports = {
   },
 
   axios: {
-    baseURL: 'http://localhost:8000'
+    baseURL: baseURL
+  },
+
+  'nuxt-i18n': {
+    baseUrl: baseURL,
+    defaultLocale: 'fr',
+    locales: [
+      { code: 'fr', iso: 'fr-FR', file: 'fr-FR.js', name: 'Français' },
+      { code: 'en', iso: 'en-EN', file: 'en-EN.js', name: 'English' }
+    ],
+    messages: {
+      fr: {homepage: "Page d'accueil"},
+      en: {homepage: "Homepage"},
+    },
+    langDir: 'translations/',
+    strategy: 'prefix_and_default',
+    lazy: true,
+    vueI18n: {
+      fallbackLocale: 'fr',
+      silentTranslationWarn: true,
+    }
   },
 
   toast: {
     position: 'top-right',
-    duration: 4000
+    duration: 2000
   }
 }
 

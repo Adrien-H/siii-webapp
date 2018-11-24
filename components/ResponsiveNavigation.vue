@@ -6,7 +6,10 @@
 
       <ul class="nav-group">
         <li class="nav-item">
-          <nuxt-link class="nav-link" :to="{name: 'index'}">
+          <!--<nuxt-link class="nav-link" :to="localePath({ name: 'index' }, 'fr')">-->
+            <!--{{ $t('homepage') }}-->
+          <!--</nuxt-link>-->
+          <nuxt-link class="nav-link" :to="{ name: 'index' }">
             Page d'accueil
           </nuxt-link>
         </li>
@@ -19,7 +22,10 @@
       </ul>
       <ul class="nav-group" v-else>
         <li class="nav-item">
-          <nuxt-link class="nav-link" :to="{name: 'login'}">
+          <!--<nuxt-link class="nav-link" :to="localePath({ name: 'login', params: { slug: 'slug.login' } })">-->
+            <!--Se connecter-->
+          <!--</nuxt-link>-->
+          <nuxt-link class="nav-link" :to="{ name: 'login' }">
             Se connecter
           </nuxt-link>
         </li>
@@ -36,6 +42,15 @@
         <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Classement</a></li>
       </ul>
+
+      <!--<ul class="nav-group">-->
+        <!--<li class="nav-item">-->
+          <!--<nuxt-link class="nav-link" :to="switchLocalePath('fr')">FR</nuxt-link>-->
+        <!--</li>-->
+        <!--<li class="nav-item">-->
+          <!--<nuxt-link class="nav-link" :to="switchLocalePath('en')">EN</nuxt-link>-->
+        <!--</li>-->
+      <!--</ul>-->
 
     </div>
 
