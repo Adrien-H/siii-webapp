@@ -12,6 +12,21 @@
         </li>
       </ul>
 
+      <ul class="nav-group" v-if="isAuthenticated">
+        <li class="nav-item"><a class="nav-link" href="#">Profil</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Messages</a></li>
+        <li class="nav-item"><a class="nav-link" href="/logout" @click.prevent="logout">Se déconnecter</a></li>
+      </ul>
+      <ul class="nav-group" v-else>
+        <li class="nav-item">
+          <nuxt-link class="nav-link" :to="{name: 'login'}">
+            Se connecter
+          </nuxt-link>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="#">S'inscrire</a></li>
+      </ul>
+
+
       <ul class="nav-group">
         <li class="nav-item"><a class="nav-link" href="#">Philosophie</a></li>
         <li class="nav-item"><a class="nav-link" href="#">Réserver</a></li>
@@ -28,7 +43,8 @@
 </template>
 
 <script>
-  // import { mapGetters } from 'vuex'
+  import { mapGetters } from 'vuex'
+
   export default {
     data () {
       return {
@@ -44,11 +60,13 @@
           this.opened = false;
         }
       },
-      logout () {
-        this.$store.dispatch('logout').then(() => {
-          this.$toast.show('À bientôt !', 'Déconnexion réussie')
-        })
-      }
+      async logout () {
+        await this.$toast.show('Déconnexion')
+        this.$auth.logout()
+      },
+    },
+    computed: {
+      ...mapGetters(['isAuthenticated', 'user'])
     },
     mounted () {
       this.opened = window.innerWidth >= 850;

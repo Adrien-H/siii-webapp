@@ -3,20 +3,25 @@ module.exports = {
   ** Headers of the page
   */
   head: {
-    title: 'siii-webapp',
+    title: 'SIII',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'SIII frontend' }
+      { hid: 'description', name: 'description', content: 'SIII project' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/png', href: 'images/favicon.png' }
     ]
   },
   /*
   ** Customize the progress bar color
   */
-  loading: { color: '#3B8070' },
+  loading: {
+    name: 'chasing-dots',
+    color: '#3B8070',
+    background: 'white',
+    height: '4px'
+  },
   /*
   ** Build configuration
   */
@@ -39,16 +44,37 @@ module.exports = {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/auth',
-    ['@nuxtjs/pwa', { icon: false }]
+    ['@nuxtjs/pwa', { icon: false }],
+    '@nuxtjs/toast'
   ],
 
   auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/login', method: 'POST', propertyName: 'token' },
+          user: { url: '/users/me', method: 'GET', propertyName: 'user' },
+          logout: false,
+          tokenRequired: true,
+          tokenType: 'Bearer'
+        }
+      }
+    },
     redirect: {
-      // login: '/login',
-      // logout: '/',
-      // callback: '/login',
-      // home: '/'
+      login: '/login',
+      logout: '/',
+      callback: '/login',
+      home: '/'
     }
+  },
+
+  axios: {
+    baseURL: 'http://localhost:8000'
+  },
+
+  toast: {
+    position: 'top-right',
+    duration: 4000
   }
 }
 
